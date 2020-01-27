@@ -10,10 +10,10 @@ models.push("exp3_per"); m_labels.push("peripheral nuclear amplitude");
 string lambdas[], l_labels[];
 real l_values[];
 pen l_pens[];
-lambdas.push("1.0E-03"); l_labels.push("$\la = 1\cdot 10^{-3}$"); l_values.push(1.0e-03); l_pens.push(black);
-lambdas.push("1.0E-04"); l_labels.push("$\la = 1\cdot 10^{-4}$"); l_values.push(1.0e-04); l_pens.push(red);
-lambdas.push("3.0E-05"); l_labels.push("$\la = 3\cdot 10^{-5}$"); l_values.push(3.0e-05); l_pens.push(blue);
-lambdas.push("1.0E-05"); l_labels.push("$\la = 1\cdot 10^{-5}$"); l_values.push(1.0e-05); l_pens.push(heavygreen);
+lambdas.push("1.0E-03"); l_labels.push("$\la = 1\cdot 10^{-3}\un{GeV}$"); l_values.push(1.0e-03); l_pens.push(black);
+lambdas.push("1.0E-04"); l_labels.push("$\la = 1\cdot 10^{-4}\un{GeV}$"); l_values.push(1.0e-04); l_pens.push(red);
+lambdas.push("3.0E-05"); l_labels.push("$\la = 3\cdot 10^{-5}\un{GeV}$"); l_values.push(3.0e-05); l_pens.push(blue);
+lambdas.push("1.0E-05"); l_labels.push("$\la = 1\cdot 10^{-5}\un{GeV}$"); l_values.push(1.0e-05); l_pens.push(heavygreen);
 
 string lambda_ref = "3.0E-05";
 

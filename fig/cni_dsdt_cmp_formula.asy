@@ -7,7 +7,7 @@ string f_eikonal = topDir + "test_cni_eikonal.root";
 string f_files[], f_objs[], f_labels[];
 pen f_pens[];
 
-f_files.push("test_cni_eikonal.root"); f_objs.push("<model>/"+formFactor+"/la=3.0E-05/CH/g_dsdt"); f_pens.push(red); f_labels.push("numerical, $\la = 3\cdot10^{-5}$");
+f_files.push("test_cni_eikonal.root"); f_objs.push("<model>/"+formFactor+"/la=3.0E-05/CH/g_dsdt"); f_pens.push(red); f_labels.push("numerical, $\la = 3\cdot10^{-5}\un{GeV}$");
 f_files.push("test_cni_elegent.root"); f_objs.push("<model>/SWY/Puckett/g_dsdt"); f_pens.push(magenta); f_labels.push("SWY");
 f_files.push("test_cni_elegent.root"); f_objs.push("<model>/Cahn/Puckett/g_dsdt"); f_pens.push(blue+dashed); f_labels.push("Cahn");
 f_files.push("test_cni_elegent.root"); f_objs.push("<model>/KL/Puckett/g_dsdt"); f_pens.push(blue); f_labels.push("KL");

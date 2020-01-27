@@ -48,7 +48,7 @@ for (int qi : quantities.keys)
 
 		for (int lai : lambdas.keys)
 		{
-			string label = "numerical:" + l_labels[lai];
+			string label = "numerical: " + l_labels[lai];
 			//if (lambdas[lai] == lambda_ref)
 			//	label += " [ref]";
 

@@ -63,7 +63,7 @@
 	J.~Ka\v spar\thanksref{fzu,cern}
 }
 
-\institute{
+\institute{%
 	Institute of Physics of the Academy of Sciences of the Czech Republic, Prague, Czech Republic.\label{fzu}
 	\and
 	CERN, Geneva, Switzerland.\label{cern}
@@ -78,7 +78,7 @@
 \begin{abstract}
 The Coulomb-nuclear interference (CNI) has recently been used by the TOTEM Collaboration to analyse proton-proton elastic-scattering data from the LHC and to draw physics conclusions. This paper will present an eikonal calculation of the CNI effects performed to all orders of the fine structure constant, $\alpha$. This calculation will be used as a reference to benchmark several widely-used CNI formulae and to verify several recent claims by other authors.
 
-\keywords{proton-proton interactions \and elastic scattering \and Coulomb-nuclear Interference \and rho parameter}
+\keywords{proton-proton interactions \and elastic scattering \and Coulomb-nuclear interference \and rho parameter}
 \PACS{
 13.85.Dz % Elastic scattering
 \and
@@ -99,7 +99,7 @@ Elastic scattering of nucleons is a process mediated by electromagnetic (Coulomb
 
 The TOTEM Collaboration has recently used the CNI to extract the value of the $\rho$ parameter, real-to-imaginary ratio of the forward amplitude, from elastic scattering differential cross-section at the collision energy $\sqrt s = 13\un{TeV}$ and interpreted the results as an argument in favour of the Odderon existence \cite{totem-13tev-rho}. This has revived also some theoretical interest in CNI; some recent publications are briefly discussed in the following paragraphs.
 
-Petrov has used a novel mathematical approach to study CNI in the eikonal framework \cite{petrov2018,petrov2018-erratum}. Some of his results take a similar form to the formulae previously obtained by Cahn \cite{cahn82} and Kudr\'at-Lokaj\'i\v cek (KL) \cite{kl94}, but have one term less. Petrov argued that this is due to a wrong treatment of proton form factors in the work by Cahn. This hypothesis will be checked in this paper. Further details of the proposed mistakes in Cahn's derivations were given in Ref.~\cite{petrov2019}, in addition suggesting that the expansion in orders of the fine-structure constant, $\alpha$, was insufficiently truncated. Also this suggestion will be tested in the present paper.
+Petrov has used a novel mathematical approach to study CNI in the eikonal framework \cite{petrov2018,petrov2018-erratum}. Some of his results take a similar form to the formulae previously obtained by Cahn \cite{cahn82} and Kudr\'at-Lokaj\'i\v cek (KL) \cite{kl94}, but have one term less. Petrov argued that this is due to a wrong treatment of proton form factors in the work by Cahn. This hypothesis will be checked in this paper. Further details of the proposed mistakes in Cahn's derivations were given in Refs.~\cite{petrov2019,petrov2020}, in addition suggesting that the expansion in orders of the fine-structure constant, $\alpha$, was insufficiently truncated. Also this suggestion will be tested in the present paper.
 
 Godizov has proposed that CNI effects may be neglibile on amplitude level, since the Coulomb and nuclear eikonals have very little overlap \cite{godizov2019}. A similar statement has been made by Donnachie and Landshoff \cite{donnachie2019}. These proposals will be verified in this paper.
 
@@ -107,9 +107,11 @@ Khoze et al.~have re-confirmed the relevance of CNI amplitude effects and furthe
 
 In this paper we focus on eikonal description of CNI, which is the common basis of works by Cahn, KL, Petrov and others. For a more complete historical review and other approaches see e.g.~Ref.~\cite{thesis}.
 
-This paper follows an approach complementary to the aforementioned publications: instead of analytic manipulations, we present a numerical analysis starting with the fundamental assumption of the eikonal framework -- the additivity of eikonals (method first used in thesis \cite{thesis}). This approach allows to double-check the analytic derivations, some steps of which were found doubtful even by the original authors, see e.g.~the comment above Eq.~(18) in Ref.~\cite{cahn82}.
+This paper follows an approach complementary to the aforementioned publications: instead of analytic manipulations, we present a numerical analysis starting with the fundamental assumption of the eikonal framework -- the additivity of eikonals (method first used in thesis \cite{thesis}). This approach allows to double-check the analytic derivations, some steps of which were found questionable even by the original authors, see e.g.~the comment above Eq.~(18) in Ref.~\cite{cahn82}.
 
-Finally, the numerical approach used in this paper provides an evaluation of the CNI to all orders of $\alpha$, to our knowledge, for the first time. Petrov has also provided a formula to all orders of $\alpha$ \cite{petrov2018} but it is not well suited for numerical evaluation.
+Finally, the numerical approach used in this paper provides an evaluation of the CNI to all orders of $\alpha$, to our knowledge, for the first time. Petrov has also provided a formula to all orders of $\alpha$ \cite{petrov2018} but it does not seem well suited for numerical evaluation.\footnote{
+Petrov has very recently published another and more explicit CNI formula including all orders of $\alpha$ \cite{petrov2020}, but we have not tested its numerical properties yet.
+}
 
 The paper is organised as follows. In Section \ref{sec:eikonal} we briefly outline the essence of the eikonal framework. Section \ref{sec:results} will show predictions of different CNI formulae applied to nuclear amplitudes reflecting the TOTEM measurements at $\sqrt s = 8\un{TeV}$ \cite{totem-8tev-1km}. Section \ref{sec:technical} gives technical details of the numerical calculation. The paper is concluded with a summary in Section \ref{sec:summary}.
 
@@ -160,7 +162,7 @@ The total amplitude, reflecting both Coulomb and nuclear interactions acting sim
 F^{\rm C+N}(t) = {s\over 2\I} \int
 \limits
 _0^\infty 
-\d b\, b\,J_0(b\sqrt{-t})\,\left( \e^{2\I \delta^{\rm C+H}(b)} - 1 \right)\ .
+\d b\, b\,J_0(b\sqrt{-t})\,\left( \e^{2\I \delta^{\rm C+N}(b)} - 1 \right)\ .
 \label{eq:F CN}
 \end{equation}
 
@@ -200,7 +202,7 @@ Differential cross-section is obtained from the corresponding amplitude by
 \begin{figure*}[h]
 \begin{center}
 \includegraphics{fig/coul_complete_cmp_lambda_phase.pdf}
-\caption{Phase of the complete Coulomb amplitude. Coloured lines come from numerical calculation (with different choices of $\lambda$). The black dashed curves show the $\eta(t)$ from Eq.~(\ref{eq:F C comp}). Left: for point-like charges, ${\cal F} \equiv 1$, Right: with a realistic proton form factor.}
+\caption{Phase of the complete Coulomb amplitude. Coloured lines come from numerical calculation (with different choices of $\lambda$). The black dashed curves correspond to $\pi + \alpha\eta(t)$, the phase of the amplitude in Eqs.~(\ref{eq:F C comp}) and (\ref{eq:F C comp ff}). Left: for point-like charges, ${\cal F} \equiv 1$, Right: with a realistic proton form factor.}
 \label{f:arg F C}
 \end{center}
 \end{figure*}
@@ -215,17 +217,17 @@ In this section, predictions from several CNI formulae will be compared:
 \item ``trivial'': plain sum of the Coulomb and nuclear amplitude, as suggested e.g.~in Ref.~\cite{godizov2019}.
 \end{itemize}
 
-The comparison will be made with two nuclear models as published by the TOTEM Collaboration in an analysis of $\sqrt s = 8\un{TeV}$ proton-proton data. The model parameters can be found in Table 5 in Ref.~\cite{totem-8tev-1km}. The model with ``constant'' phase will be here referred to as ``central'' to express that it yields a profile function peaking at smaller impact-parameter value wrt.~the other model with ``peripheral'' phase.
+To test the numerical calculation one needs to assume a certain nuclear amplitude, $F^{\rm N}(t)$. This inavoidably introduces some model-dependence in our results. In order to focus on physics-relevant models, we will use the two nuclear amplitudes published by the TOTEM Collaboration in an analysis of $\sqrt s = 8\un{TeV}$ proton-proton data \cite{totem-8tev-1km} (Table 5). While the experimental measurement puts strict contraints on the amplitude modulus, the phase remains almost arbitrary. Consequently, two extreme/alternative options will be tested: ``central'' with nuclear phase constant in $t$ and ``peripheral'' with nuclear phase rapidly varying in $t$. The labels have been chosed to reflect the different impact-parameter behaviour: the ``central'' model yields a profile function peaking at smaller impact-parameter value wrt.~the ``peripheral'' model.
 
 The proton form-factor will be modelled according to Puckett et al.~\cite{puckett}.
 
-In the numerical calculation, the $\lambda$ regulator cannot be strictly set to zero, but instead it can be chosen small enough not to have any impact on the results in the $b$ and $t$ ranges of interest. This is illustrated for example in Figure \ref{f:sig C}: results for different values of $\lambda$ are shown in different colours. As $\lambda$ gets smaller, the difference between results diminishes. In particular, there is almost no visible difference between $\lambda = 3\cdot 10^{-5}$ (blue) and $10^{-5}$ (green). This indicates that the former value of $\lambda$ is small enough and will be often used as reference for comparisons.
+In the numerical calculation, the $\lambda$ regulator cannot be strictly set to zero, but instead it can be chosen small enough not to have any impact on the results in the $b$ and $t$ ranges of interest. This is illustrated for example in Figure \ref{f:sig C}: results for different values of $\lambda$ are shown in different colours. As $\lambda$ gets smaller, the difference between results diminishes. In particular, there is almost no visible difference between $\lambda = 3\cdot 10^{-5}$ (blue) and $10^{-5}\un{GeV}$ (green). This indicates that the former value of $\lambda$ is small enough and will be often used as reference for comparisons.
 
 Figure \ref{f:sig C} compares the complete (i.e.~to all orders of $\alpha$) Coulomb cross-section from the numerical calculation (colours) to the input Born-level expression (black dashed). The left plot, corresponding to point-like protons, shows a perfect agreement between the numerical calculation (for sufficiently small $\lambda$) and the Born curve, as expected from Eq.~(\ref{eq:F C comp}). The right plot, corresponding to a realistic proton form factor, shows small relative deviations, ${\cal O}(10^{-4})$.
 
 Figure \ref{f:arg F C} shows the phase of the complete Coulomb amplitude which depends on the choice of $\lambda$ (different colours). The left plot, for point-like protons, indicates a perfect agreement with the $\eta(t)$ calculation by Cahn (black dashed). The right plot, for a realistic form factor, shows small deviations, ${\cal O}(10^{-3})$.
 
-Figure \ref{f:sig CN} compares the full (Coulomb + nuclear) cross-section from the numerical calculation for several choices of $\lambda$. Like in Figure \ref{f:sig C}, the smaller $\lambda$, the smaller difference in predictions. When $\lambda < 3\cdot 10^{-5}$, no visible difference is present.
+Figure \ref{f:sig CN} compares the total (Coulomb + nuclear) cross-section from the numerical calculation for several choices of $\lambda$. Like in Figure \ref{f:sig C}, the smaller $\lambda$, the smaller difference in predictions. When $\lambda \lesssim 3\cdot 10^{-5}\un{GeV}$, no visible difference is present. This has been further verified for $\lambda$ values down to $3\cdot10^{-6}\un{GeV}$ and agrees with the expectation from Eq.~(\ref{eq:F C Born}): introducing $\lambda$ makes negligible effect whenever $\lambda^2 \ll |t|$. In conclusion, we believe that we can chose $\lambda$ sufficiently small such that the numerical calculation gives predictions comparable (on our $|t|$ range starting at $10^{-4}\un{GeV^2}$) with the $\lambda\to 0$ limit.
 
 \begin{figure*}[h]
 \begin{center}
@@ -235,8 +237,6 @@ Figure \ref{f:sig CN} compares the full (Coulomb + nuclear) cross-section from t
 \end{center}
 \end{figure*}
 
-Figure \ref{f:sig form} compares predictions from several CNI formulae to the reference from the numerical calculation (red, to all orders of $\alpha$). For both central (left) and peripheral (right) cases, the predictions by Cahn and KL are almost identical and they overlap with the numerical-calculation reference -- the relative difference is ${\cal O}(10^{-4})$. The trivial sum of the Coulomb and nuclear amplitudes can deviate up to about $3.5\un{\%}$. The formula by Petrov (missing one term wrt.~Cahn/KL) can deviate by almost $5\un{\%}$. The SWY formula provides relatively good description in the ``central'' case (relative deviations ${\cal O} = 10^{-3}$) and somewhat worse description in the ``peripheral'' case (deviations up to about $1\un{\%}$).
-
 \begin{figure*}[h]
 \begin{center}
 \includegraphics{fig/cni_dsdt_cmp_formula.pdf}
@@ -244,6 +244,8 @@ Figure \ref{f:sig form} compares predictions from several CNI formulae to the re
 \label{f:sig form}
 \end{center}
 \end{figure*}
+
+Figure \ref{f:sig form} compares predictions from several CNI formulae to the reference from the numerical calculation (red, to all orders of $\alpha$). For both central (left) and peripheral (right) cases, the predictions by Cahn and KL are almost identical and they overlap with the numerical-calculation reference -- the relative difference is ${\cal O}(10^{-4})$. The trivial sum of the Coulomb and nuclear amplitudes can deviate up to about $3.5\un{\%}$. The formula by Petrov (missing one term wrt.~Cahn/KL) can deviate by almost $5\un{\%}$. The SWY formula provides relatively good description in the ``central'' case (relative deviations ${\cal O}(10^{-3})$) and somewhat worse description in the ``peripheral'' case (deviations up to about $1\un{\%}$). This is not surprising since the SWY formula assumes a slow nuclear phase variation.
 
 
 %----------------------------------------------------------------------------------------------------
@@ -253,13 +255,13 @@ Figure \ref{f:sig form} compares predictions from several CNI formulae to the re
 
 The numerical integration in Eqs.~(\ref{eq:de C}), (\ref{eq:A N}) and (\ref{eq:F CN}) is performed with the help of the GSL library \cite{gsl}, in particular using adaptive integration based on 61-point Gauss-Kronrod rules.
 
-For the numerical integration one needs to set reasonable boundaries. In the case of Eq.~(\ref{eq:F CN}) a reasonable upper limit, $b_{\rm max}$, can be deduced by analysing the expression in the parentheses, in the lowest order being $2\I\delta^{\rm C+H}$. At large $b$, this function can well be approximated with $2\I\delta^{\rm C}_{\rm asym}$. One may truncate the integration once the $K_0(\lambda b)$ function becomes sufficiently small, i.e.~when $\lambda b$ exceeds a certain threshold. Consequently, we adopted $b_{\rm max} = c / \lambda$, where $c = 10$ was found appropriate by numerical tests -- variation of $c$ between $5$ and $50$ leads to negligible changes in the results.
+For the numerical integration one needs to set reasonable boundaries. In the case of Eq.~(\ref{eq:F CN}) a reasonable upper limit, $b_{\rm max}$, can be deduced by analysing the expression in the parentheses, in the lowest order being $2\I\delta^{\rm C+N}$. At large $b$, this function can well be approximated with $2\I\delta^{\rm C}_{\rm asym}$. One may truncate the integration once the $K_0(\lambda b)$ function becomes sufficiently small, i.e.~when $\lambda b$ exceeds a certain threshold. Consequently, we adopted $b_{\rm max} = c / \lambda$, where $c = 10$ was found appropriate by numerical tests -- variation of $c$ between $5$ and $50$ leads to negligible changes in the results.
 
 In the case of Eq.~(\ref{eq:de C}), the upper limit was set to $q_{\rm max} = 10^{max(3, 3 - log_{10}(b))} \un{GeV}$. This rule was found with numerical tests, there is negligible variation of the results when the parameters and varied around the quoted values. The rule works both with and without including form-factors. The reduction of $q_{\rm max}$ with $b$ can be justified by the fact that the amplitude of $J_0(bq)$ decreases with its increasing argument.
 
 The implementation of the analytic interference formulae (Cahn, KL, Petrov and SWY) is based on the Elegent software package \cite{elegent}.
 
-Several optimisations are used in the numerical evaluation. First, the asymptotic expression $\delta^{\rm C}_{\rm asym}$ is used instead of the integral in Eq.~(\ref{eq:de C}) for $b > 20\un{GeV^{-1}}$. It has been checked that the relative error of this simplification is smaller than $10^{-4}$. Then, Eq.~(\ref{eq:F CN}) is recast such that the expression in the parentheses is reduced by $2\I\delta^{\rm C}$ which is compensated by adding the Coulomb Born amplitude, Eq.~(\ref{eq:F C Born}) outside the integral. This algebraic transformation improves the convergence of the numerical integration.
+Several optimisations are used in the numerical evaluation. First, the asymptotic expression $\delta^{\rm C}_{\rm asym}$ is used instead of the integral in Eq.~(\ref{eq:de C}) for $b > 20\un{GeV^{-1}}$. It has been checked that the relative error of this simplification is smaller than $10^{-4}$. Then, Eq.~(\ref{eq:F CN}) is recast such that the expression in the parentheses is reduced by $2\I\delta^{\rm C}$ which is compensated by adding the Coulomb Born amplitude, Eq.~(\ref{eq:F C Born}), outside the integral. This algebraic transformation improves the convergence of the numerical integration.
 
 The full calculation code in C++ is available in a public GitHub repository \cite{code}.
 
@@ -280,9 +282,9 @@ A plain sum of the Coulomb and nuclear amplitudes, compared to the eikonal numer
 
 The SWY formula reproduces the numerical eikonal calculation well for the ``central'' nuclear amplitude. In the ``peripheral'' case, the deviations are up to $1\un{\%}$.
 
-The best reproduction of the numerical eikonal calculation has been found by the Cahn/KL formulae, the relative deviations are ${\cal O}(10^{-4})$. This indicates that Cahn's inexact approximation of the complete Coulomb amplitude and the early truncation of the series in powers of $\alpha$ (as pointed out by Petrov \cite{petrov2019}) does not have any detrimental effect that could be currently experimentally observed. This leads us to the conclusion that the formulae by Cahn/KL are currently the ``best on the market''.
+The best reproduction of the numerical eikonal calculation has been found by the Cahn/KL formulae, the relative deviations are ${\cal O}(10^{-4})$. This indicates that Cahn's inexact approximation of the complete Coulomb amplitude and the early truncation of the series in powers of $\alpha$ (as pointed out by Petrov \cite{petrov2019,petrov2020}) do not have any detrimental effect that could be currently experimentally observed. This leads us to the conclusion that the formulae by Cahn/KL are currently the ``best on the market''.
 
-One may argue that taking the eikonal calculation as reference is a biased choice, since the eikonal framework is an approximation on its own and it cannot naturally include some of the known effects (further discussion can be found in e.g.~\cite{thesis,petrov2018,kmr2019}). Possibly one of the effects most difficult to evaluate -- the influence of the inelastic intermediate states -- has recently been estimated by Khoze et al.~\cite{kmr2019}, finding that the effect would not be observable with the current experimental accuracy.
+One may argue that taking the eikonal calculation as reference is a biased choice, since the eikonal framework is an approximation on its own and it cannot naturally include some of the known effects (further discussion can be found e.g.~in Refs.~\cite{thesis,petrov2018,kmr2019}). Possibly one of the effects most difficult to evaluate -- the influence of the inelastic intermediate states -- has recently been estimated by Khoze et al.~\cite{kmr2019}, finding that the effect would not be observable with the current experimental accuracy.
 
 Overall, we find that TOTEM has chosen a reasonable model of the CNI effects to extract the $\rho$ parameter \cite{totem-13tev-rho}.
 
@@ -291,7 +293,7 @@ Overall, we find that TOTEM has chosen a reasonable model of the CNI effects to 
 %----------------------------------------------------------------------------------------------------
 
 \begin{acknowledgements}
-The author is grateful for stimulating discussions with V.~Petrov and V.~Kundr\'at.
+The author is grateful for stimulating discussions with A.~Godizov, V.~Khoze and collaborators, V.~Kundr\'at and V.~Petrov. The author also wishes to thank several of them for valuable suggestions how to improve this manuscript.
 \end{acknowledgements}
 
 %----------------------------------------------------------------------------------------------------
@@ -331,6 +333,11 @@ The author is grateful for stimulating discussions with V.~Petrov and V.~Kundr\'
 	V.~A.~Petrov,
 	``Towards the modification of the formula for Coulomb-nuclear interference'',
 	private communication (2019)
+
+\bibitem{petrov2020}
+	V.~A.~Petrov,
+	``Coulomb-Nuclear Interference: the Latest Modification'',
+	arXiv:2001.06220v1
 
 \bibitem{godizov2019}
 	A.~A.~Godizov,

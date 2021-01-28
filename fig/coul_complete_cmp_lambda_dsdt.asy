@@ -22,16 +22,12 @@ for (int qi : quantities.keys)
 {
 	string quantity = quantities[qi];
 
-	for (int ffi : formFactors.keys)
-	{
-		NewPad(false);
-		label(ff_labels[ffi]);
-	}
-
-	NewRow();
+	frame f_legend;
 
 	for (int ffi : formFactors.keys)
 	{
+		NewRow();
+
 		NewPad("$|t|\ung{GeV^2}$", "$(" + q_labels[qi] + " - \hbox{ref}) / \hbox{ref}$");
 		//scale(Linear, Log);
 		
@@ -47,11 +43,17 @@ for (int qi : quantities.keys)
 		}
 
 		limits((0, -0.0005), (0.02, +q_rel_maxs[qi]), Crop);
+
+		f_legend = BuildLegend();
+
+		currentpicture.legend.delete();
+
+		AttachLegend(shift(0, 1) * BuildLegend(ff_labels[ffi], S, framePen=nullpen), N);
 	}
 
 	draw((0, 0)--(0.02, 0.), dashed, "Born ($\la = 0$) [ref]");
 
-	AttachLegend();
+	AttachLegend(f_legend);
 
 	GShipout("coul_complete_cmp_lambda_" + quantity, hSkip=3mm, vSkip=0mm);
 }

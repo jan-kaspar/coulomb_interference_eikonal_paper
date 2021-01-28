@@ -23,12 +23,6 @@ xTicksDef = LeftTicks(0.005, 0.001);
 
 //----------------------------------------------------------------------------------------------------
 
-for (int mi : models.keys)
-{
-	NewPad(false);
-	label(m_labels[mi]);
-}
-
 /*
 NewRow();
 
@@ -59,8 +53,12 @@ NewRow();
 
 yTicksDef = RightTicks(0.01, 0.005);
 
+frame f_legend;
+
 for (int mi : models.keys)
 {
+	NewRow();
+
 	NewPad("$|t|\ung{GeV^2}$", "$(\d\sigma/\d t - \hbox{ref}) / \hbox{ref}$");
 	//scale(Linear, Log);
 
@@ -82,8 +80,14 @@ for (int mi : models.keys)
 	}
 
 	limits((0, -0.01), (0.02, 0.05), Crop);
+	
+	f_legend = BuildLegend(ymargin=0mm);
+
+	currentpicture.legend.delete();
+
+	AttachLegend(shift(0, 1) * BuildLegend(m_labels[mi], S, framePen=nullpen), N);
 }
 
-AttachLegend(BuildLegend(ymargin=0mm));
+AttachLegend(f_legend);
 
 GShipout(hSkip=3mm, vSkip=0mm, margin=0mm);

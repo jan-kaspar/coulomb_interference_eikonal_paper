@@ -1,4 +1,4 @@
-\documentclass[pdftex,twocolumn,epjc3]{svjour3}
+\documentclass{appolb}
 
 \RequirePackage[utf8]{inputenc}
 
@@ -51,40 +51,28 @@
 
 %----------------------------------------------------------------------------------------------------
 
-\journalname{Eur. Phys. J. C}
-
 \begin{document}
 
 \title{Coulomb-nuclear interference in elastic scattering: eikonal calculation to all orders of $\alpha$}
 
-\titlerunning{Coulomb-nuclear interference}
-
 \author{
-	J.~Ka\v spar\thanksref{fzu,cern}
+	J.~Ka\v spar
+		\address{
+			Institute of Physics of the Academy of Sciences of the Czech Republic, Prague, Czech Republic
+			and CERN, Geneva, Switzerland.
+		}
 }
-
-\institute{%
-	Institute of Physics of the Academy of Sciences of the Czech Republic, Prague, Czech Republic.\label{fzu}
-	\and
-	CERN, Geneva, Switzerland.\label{cern}
-}
-
-\authorrunning{J.~Ka\v spar}
-
-\date{Manuscript date: \today}
 
 \maketitle
 
 \begin{abstract}
 The Coulomb-nuclear interference (CNI) has recently been used by the TOTEM Collaboration to analyse proton-proton elastic-scattering data from the LHC and to draw physics conclusions. This paper will present an eikonal calculation of the CNI effects performed to all orders of the fine structure constant, $\alpha$. This calculation will be used as a reference to benchmark several widely-used CNI formulae and to verify several recent claims by other authors.
+\end{abstract}
 
-\keywords{proton-proton interactions \and elastic scattering \and Coulomb-nuclear interference \and rho parameter}
-\PACS{
-13.85.Dz % Elastic scattering
-\and
+\PACS{%
+13.85.Dz, % Elastic scattering
 13.40.Ks % Electromagnetic corrections to strong- and weak-interaction processes
 }
-\end{abstract}
 
 %----------------------------------------------------------------------------------------------------
 
@@ -110,8 +98,10 @@ In this paper we focus on eikonal description of CNI, which is the common basis 
 This paper follows an approach complementary to the aforementioned publications: instead of analytic manipulations, we present a numerical analysis starting with the fundamental assumption of the eikonal framework -- the additivity of eikonals (method first used in thesis \cite{thesis}). This approach allows to double-check the analytic derivations, some steps of which were found questionable even by the original authors, see e.g.~the comment above Eq.~(18) in Ref.~\cite{cahn82}.
 
 Finally, the numerical approach used in this paper provides an evaluation of the CNI to all orders of $\alpha$, to our knowledge, for the first time. Petrov has also provided a formula to all orders of $\alpha$ \cite{petrov2018} but it does not seem well suited for numerical evaluation.\footnote{
-Petrov has very recently published another and more explicit CNI formula including all orders of $\alpha$ \cite{petrov2020}, but we have not tested its numerical properties yet.
+Petrov has recently published another and more explicit CNI formula including all orders of $\alpha$ \cite{petrov2020}, but we have not tested its numerical properties yet.
 }
+
+After the publication of a preprint of this manuscript \cite{preprint} Petrov has published a critical reaction \cite{petrov2020-2}. His critical comments will be addressed with multiple footnotes throughout the text.
 
 The paper is organised as follows. In Section \ref{sec:eikonal} we briefly outline the essence of the eikonal framework. Section \ref{sec:results} will show predictions of different CNI formulae applied to nuclear amplitudes reflecting the TOTEM measurements at $\sqrt s = 8\un{TeV}$ \cite{totem-8tev-1km}. Section \ref{sec:technical} gives technical details of the numerical calculation. The paper is concluded with a summary in Section \ref{sec:summary}.
 
@@ -194,7 +184,7 @@ Differential cross-section is obtained from the corresponding amplitude by
 \begin{figure*}[h]
 \begin{center}
 \includegraphics{fig/coul_complete_cmp_lambda_dsdt.pdf}
-\caption{Complete Coulomb cross-section -- relative difference between numerical calculation (Eq.~(\ref{eq:F CN}) with $\delta^{\rm N} \equiv 0$) wrt.~Born-level input, Eq.~(\ref{eq:F C Born} with $\lambda = 0$). The different colours represent different choices of $\lambda$. Left: for point-like charges, ${\cal F} \equiv 1$, Right: with a realistic proton form factor.}
+\caption{Complete Coulomb cross-section -- relative difference between numerical calculation (Eq.~(\ref{eq:F CN}) with $\delta^{\rm N} \equiv 0$) wrt.~Born-level input, Eq.~(\ref{eq:F C Born} with $\lambda = 0$). The different colours represent different choices of $\lambda$. {\it Top}: for point-like charges, ${\cal F} \equiv 1$, {\it bottom}: with a realistic proton form factor.}
 \label{f:sig C}
 \end{center}
 \end{figure*}
@@ -202,7 +192,7 @@ Differential cross-section is obtained from the corresponding amplitude by
 \begin{figure*}[h]
 \begin{center}
 \includegraphics{fig/coul_complete_cmp_lambda_phase.pdf}
-\caption{Phase of the complete Coulomb amplitude. Coloured lines come from numerical calculation (with different choices of $\lambda$). The black dashed curves correspond to $\pi + \alpha\eta(t)$, the phase of the amplitude in Eqs.~(\ref{eq:F C comp}) and (\ref{eq:F C comp ff}). Left: for point-like charges, ${\cal F} \equiv 1$, Right: with a realistic proton form factor.}
+\caption{Phase of the complete Coulomb amplitude. Coloured lines come from numerical calculation (with different choices of $\lambda$). The black dashed curves correspond to $\pi + \alpha\eta(t)$, the phase of the amplitude in Eqs.~(\ref{eq:F C comp}) and (\ref{eq:F C comp ff}). {\it Top}: for point-like charges, ${\cal F} \equiv 1$, {\it bottom}: with a realistic proton form factor.}
 \label{f:arg F C}
 \end{center}
 \end{figure*}
@@ -232,7 +222,7 @@ Figure \ref{f:sig CN} compares the total (Coulomb + nuclear) cross-section from 
 \begin{figure*}[h]
 \begin{center}
 \includegraphics{fig/cni_dsdt_cmp_lambda.pdf}
-\caption{Full Coulomb+nuclear cross-section as obtained from the numerical calculation, Eq.~(\ref{eq:F CN}), for different values of $\lambda$ (colours). The green curve suffers from little numerical instabilities. Left: for central nuclear amplitude, Right: for peripheral nuclear amplitude.}
+\caption{Full Coulomb+nuclear cross-section as obtained from the numerical calculation, Eq.~(\ref{eq:F CN}), for different values of $\lambda$ (colours). The green curve suffers from little numerical instabilities. {\it Top}: for central nuclear amplitude, {\it bottom}: for peripheral nuclear amplitude.}
 \label{f:sig CN}
 \end{center}
 \end{figure*}
@@ -240,7 +230,7 @@ Figure \ref{f:sig CN} compares the total (Coulomb + nuclear) cross-section from 
 \begin{figure*}[h]
 \begin{center}
 \includegraphics{fig/cni_dsdt_cmp_formula.pdf}
-\caption{Relative difference between various CNI formulae and the reference from the numerical calculation (red). Left: for central nuclear amplitude, Right: for peripheral nuclear amplitude.}
+\caption{Relative difference between various CNI formulae and the reference from the numerical calculation (red). {\it Top}: for central nuclear amplitude, {\it bottom}: for peripheral nuclear amplitude.}
 \label{f:sig form}
 \end{center}
 \end{figure*}
@@ -292,9 +282,9 @@ Overall, we find that TOTEM has chosen a reasonable model of CNI effects to extr
 
 %----------------------------------------------------------------------------------------------------
 
-\begin{acknowledgements}
+\section{Acknowledgements}
+
 The author is grateful for stimulating discussions with A.~Godizov, V.~Khoze and collaborators, V.~Kundr\'at and V.~Petrov. The author also wishes to thank several of them for valuable suggestions how to improve this manuscript.
-\end{acknowledgements}
 
 %----------------------------------------------------------------------------------------------------
 
@@ -363,6 +353,16 @@ The author is grateful for stimulating discussions with A.~Godizov, V.~Khoze and
 	2011
 	%http://cdsweb.cern.ch/record/1441140
 
+\bibitem{preprint}
+	J.~Ka\v{s}par,
+	``Coulomb-nuclear interference in elastic scattering: eikonal calculation to all orders of $\alpha$'',
+	arXiv:2001.10227v1 [hep-ph] (2020)
+
+\bibitem{petrov2020-2}
+	V.~A.~Petrov,
+	``Twice More On Coulomb-Nuclear Interference'',
+	arXiv:2003.07654v1 [hep-ph] (2020)
+
 \bibitem{totem-8tev-1km}
 	G.~Antchev et al.~(TOTEM Collaboration)
 	\journal{Eur. Phys. J.}{C76}{2016}{661}
@@ -391,10 +391,9 @@ The author is grateful for stimulating discussions with A.~Godizov, V.~Khoze and
 	http://elegent.hepforge.org/
 
 \bibitem{code}
-	J.~Ka\v{s}par,\\
+	J.~Ka\v{s}par,
 	https://github.com/jan-kaspar/coulomb\_interference\_eikonal
 	
-
 \end{thebibliography}
 
 \end{document}

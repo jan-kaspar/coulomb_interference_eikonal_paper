@@ -33,16 +33,14 @@ for (int qi : quantities.keys)
 {
 	string quantity = quantities[qi];
 
-	for (int ffi : formFactors.keys)
-	{
-		NewPad(false);
-		label(ff_labels[ffi]);
-	}
-
 	NewRow();
 
+	frame f_legend;
+
 	for (int ffi : formFactors.keys)
 	{
+		NewRow();
+
 		NewPad("$|t|\ung{GeV^2}$", "$" + q_labels[qi] + q_units[qi] + "$");
 		//scale(Linear, Log);
 
@@ -63,9 +61,15 @@ for (int qi : quantities.keys)
 		}
 
 		limits((0, q_abs_mins[qi]), (0.02, q_abs_maxs[qi]), Crop);
+
+		f_legend = BuildLegend(ymargin=0.5mm);
+
+		currentpicture.legend.delete();
+
+		AttachLegend(shift(0, 1) * BuildLegend(ff_labels[ffi], S, framePen=nullpen), N);
 	}
 
-	AttachLegend(BuildLegend(ymargin=0.5mm));
+	AttachLegend(f_legend);
 
 	/*
 	NewRow();

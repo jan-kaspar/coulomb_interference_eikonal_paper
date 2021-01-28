@@ -1,0 +1,8 @@
+#!/bin/bash
+
+tar czvf cni_eikonal.tar.gz\
+	svepjc3.clo \
+	svglov3.clo \
+	svjour3.cls \
+	fig/*.pdf \
+	cni_eikonal.tex

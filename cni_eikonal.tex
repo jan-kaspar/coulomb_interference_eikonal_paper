@@ -3,14 +3,17 @@
 \RequirePackage[utf8]{inputenc}
 
 \RequirePackage{color}
+\RequirePackage{amssymb}
 \RequirePackage{graphicx}
+
+\iffalse
 \RequirePackage{mathptmx}      % use Times fonts if available on your TeX system
 \RequirePackage{flushend}
 \RequirePackage[numbers,sort&compress]{natbib}
 \RequirePackage[colorlinks,citecolor=blue,urlcolor=blue,linkcolor=blue]{hyperref}
 \RequirePackage{amsmath}
-\RequirePackage{amssymb}
 \RequirePackage{enumitem}
+\fi
 
 \iffalse % disable at the end
 	\usepackage{lineno}
@@ -40,6 +43,9 @@
 
 \def\TODO#1{{\color{red}TODO: #1}}
 %\def\TODO#1{}
+
+%\def\NEW#1{{\color{red}#1}}
+\def\NEW#1{{#1}}
 
 \setbox123\hbox{$0$}
 \setbox124\hbox{$.$}
@@ -97,11 +103,9 @@ In this paper we focus on eikonal description of CNI, which is the common basis 
 
 This paper follows an approach complementary to the aforementioned publications: instead of analytic manipulations, we present a numerical analysis starting with the fundamental assumption of the eikonal framework -- the additivity of eikonals (method first used in thesis \cite{thesis}). This approach allows to double-check the analytic derivations, some steps of which were found questionable even by the original authors, see e.g.~the comment above Eq.~(18) in Ref.~\cite{cahn82}.
 
-Finally, the numerical approach used in this paper provides an evaluation of the CNI to all orders of $\alpha$, to our knowledge, for the first time. Petrov has also provided a formula to all orders of $\alpha$ \cite{petrov2018} but it does not seem well suited for numerical evaluation.\footnote{
-Petrov has recently published another and more explicit CNI formula including all orders of $\alpha$ \cite{petrov2020}, but we have not tested its numerical properties yet.
-}
+Finally, the numerical approach used in this paper provides an \NEW{explicit} evaluation of the CNI to all orders of $\alpha$, to our knowledge, for the first time. Petrov has also provided a formula to all orders of $\alpha$ \cite{petrov2018} but \NEW{, in our opinion, it is not well suited for numerical evaluation. Petrov has recently published another and more explicit CNI formula including all orders of $\alpha$ \cite{petrov2020}, but we have not had a chance to test its numerical properties yet.}
 
-After the publication of a preprint of this manuscript \cite{preprint} Petrov has published a critical reaction \cite{petrov2020-2}. His critical comments will be addressed with multiple footnotes throughout the text.
+\NEW{After a preprint of this work has been made available \cite{preprint} Petrov has published a critical reaction \cite{petrov2020-2}. His critical comments are addressed in this revised version of the document.}
 
 The paper is organised as follows. In Section \ref{sec:eikonal} we briefly outline the essence of the eikonal framework. Section \ref{sec:results} will show predictions of different CNI formulae applied to nuclear amplitudes reflecting the TOTEM measurements at $\sqrt s = 8\un{TeV}$ \cite{totem-8tev-1km}. Section \ref{sec:technical} gives technical details of the numerical calculation. The paper is concluded with a summary in Section \ref{sec:summary}.
 
@@ -184,7 +188,7 @@ Differential cross-section is obtained from the corresponding amplitude by
 \begin{figure*}[h]
 \begin{center}
 \includegraphics{fig/coul_complete_cmp_lambda_dsdt.pdf}
-\caption{Complete Coulomb cross-section -- relative difference between numerical calculation (Eq.~(\ref{eq:F CN}) with $\delta^{\rm N} \equiv 0$) wrt.~Born-level input, Eq.~(\ref{eq:F C Born} with $\lambda = 0$). The different colours represent different choices of $\lambda$. {\it Top}: for point-like charges, ${\cal F} \equiv 1$, {\it bottom}: with a realistic proton form factor.}
+\caption{Complete Coulomb cross-section -- relative difference between numerical calculation (Eq.~(\ref{eq:F CN}) with $\delta^{\rm N} \equiv 0$) wrt.~Born-level input, Eq.~(\ref{eq:F C Born}) with $\lambda = 0$. The different colours represent different choices of $\lambda$. {\it Top}: for point-like charges, ${\cal F} \equiv 1$, {\it bottom}: with a realistic proton form factor.}
 \label{f:sig C}
 \end{center}
 \end{figure*}
@@ -206,6 +210,7 @@ In this section, predictions from several CNI formulae will be compared:
 \item ``SWY'': Eq.~(26) in Ref.~\cite{wy68},
 \item ``trivial'': plain sum of the Coulomb and nuclear amplitude, as suggested e.g.~in Ref.~\cite{godizov2019}.
 \end{itemize}
+\NEW{For completness: Eq.~(13) in Ref.~\cite{petrov2018} (to all orders of $\alpha$) is not considered here -- not for lack of interest, but for difficulties in constructing an associated numerical-integration computer program. We believe that it is worth a forthcoming study, along with considering another represation proposed by Petrov, e.g.~Eq.~(13) in Ref.~\cite{petrov2020-2}.}
 
 To test the numerical calculation one needs to assume a certain nuclear amplitude, $F^{\rm N}(t)$. This unavoidably introduces some model-dependence in our results. In order to focus on physics-relevant models, we will use the two nuclear amplitudes published by the TOTEM Collaboration in an analysis of $\sqrt s = 8\un{TeV}$ proton-proton data \cite{totem-8tev-1km} (Table 5). While the differential cross-section measurement puts strict constraints on the amplitude modulus, the phase remains almost arbitrary. Consequently, two extreme/alternative options will be tested: ``central'' with nuclear phase constant in $t$ and ``peripheral'' with nuclear phase rapidly varying in $t$. The labels have been chosen to reflect the different impact-parameter behaviour: the ``central'' model yields a profile function peaking at smaller impact-parameter value wrt.~the ``peripheral'' model.
 
@@ -213,16 +218,16 @@ The proton form-factor will be modelled according to Puckett et al.~\cite{pucket
 
 In the numerical calculation, the $\lambda$ regulator cannot be strictly set to zero, but instead it can be chosen small enough not to have any significant impact on the results in the $b$ and $t$ ranges of interest. This is illustrated for example in Figure \ref{f:sig C}: results for different values of $\lambda$ are shown in different colours. As $\lambda$ gets smaller, the difference between results diminishes. In particular, there is almost no visible difference between $\lambda = 3\cdot 10^{-5}$ (blue) and $10^{-5}\un{GeV}$ (green). This indicates that the former value of $\lambda$ is small enough (for our $|t|$ range) and will be often used as a reference for comparisons.
 
-Figure \ref{f:sig C} compares the complete (i.e.~to all orders of $\alpha$) Coulomb cross-section from the numerical calculation (colours) to the input Born-level expression (black dashed). The left plot, corresponding to point-like protons, shows a perfect agreement between the numerical calculation (for sufficiently small $\lambda$) and the Born curve, as expected from Eq.~(\ref{eq:F C comp}). The right plot, corresponding to a realistic proton form factor, shows small relative deviations, ${\cal O}(10^{-4})$.
+Figure \ref{f:sig C} compares the complete (i.e.~to all orders of $\alpha$) Coulomb cross-section from the numerical calculation (colours) to the input Born-level expression (black dashed). The top plot, corresponding to point-like protons, shows a perfect agreement between the numerical calculation (for sufficiently small $\lambda$) and the Born curve, as expected from Eq.~(\ref{eq:F C comp}). The bottom plot, corresponding to a realistic proton form factor, shows small relative deviations, ${\cal O}(10^{-4})$.
 
-Figure \ref{f:arg F C} shows the phase of the complete Coulomb amplitude which depends on the choice of $\lambda$ (different colours). The left plot, for point-like protons, indicates a perfect agreement with the $\eta(t)$ calculation by Cahn (black dashed). The right plot, for a realistic form factor, shows small deviations, ${\cal O}(10^{-3})$.
+Figure \ref{f:arg F C} shows the phase of the complete Coulomb amplitude which depends on the choice of $\lambda$ (different colours). The top plot, for point-like protons, indicates a perfect agreement with the $\eta(t)$ calculation by Cahn (black dashed). The bottom plot, for a realistic form factor, shows small deviations, ${\cal O}(10^{-3})$.
 
-Figure \ref{f:sig CN} compares the total (Coulomb + nuclear) cross-section from the numerical calculation for several choices of $\lambda$. Like in Figure \ref{f:sig C}, the smaller $\lambda$, the smaller difference in predictions. When $\lambda \lesssim 3\cdot 10^{-5}\un{GeV}$, almost no visible difference is present. This has been further verified for $\lambda$ values down to $3\cdot10^{-6}\un{GeV}$ and agrees with the expectation from Eq.~(\ref{eq:F C Born}): introducing $\lambda$ makes negligible effect whenever $\lambda^2 \ll |t|$. In conclusion, we believe that we can choose $\lambda$ sufficiently small such that the numerical calculation gives predictions comparable (on our $|t|$ range starting at $10^{-4}\un{GeV^2}$) with the $\lambda\to 0$ limit.
+Figure \ref{f:sig CN} compares the total (Coulomb + nuclear) cross-section from the numerical calculation for several choices of $\lambda$. Like in Figure \ref{f:sig C}, the smaller $\lambda$, the smaller difference in predictions. When $\lambda \lesssim 3\cdot 10^{-5}\un{GeV}$, almost no visible difference is present. This has been further verified for $\lambda$ values down to $3\cdot10^{-6}\un{GeV}$ and agrees with the expectation from Eq.~(\ref{eq:F C Born}): introducing $\lambda$ makes negligible effect whenever $\lambda^2 \ll |t|$. In conclusion, we believe that we can choose $\lambda$ sufficiently small such that the numerical calculation gives predictions comparable (on our $|t|$ range starting at $10^{-4}\un{GeV^2}$) with the $\lambda\to 0$ limit. \NEW{We find misleading the comment below Eq.~(1) in Ref.~\cite{petrov2020-2} that a single value of $\lambda$ is used. In contrary, a series of $\lambda$ values is systematically considered and the associated results are analysed. Only the fact the results evolve with $\lambda$ as expected allows us to make the presented interpretation.}
 
 \begin{figure*}[h]
 \begin{center}
 \includegraphics{fig/cni_dsdt_cmp_lambda.pdf}
-\caption{Full Coulomb+nuclear cross-section as obtained from the numerical calculation, Eq.~(\ref{eq:F CN}), for different values of $\lambda$ (colours). The green curve suffers from little numerical instabilities. {\it Top}: for central nuclear amplitude, {\it bottom}: for peripheral nuclear amplitude.}
+\caption{Full Coulomb+nuclear cross-section as obtained from the numerical calculation, Eq.~(\ref{eq:F CN}), for different values of $\lambda$ (colours). The green curve suffers from little numerical instabilities \NEW{(negligible compared to typical experimental uncertainties)}. {\it Top}: for central nuclear amplitude, {\it bottom}: for peripheral nuclear amplitude.}
 \label{f:sig CN}
 \end{center}
 \end{figure*}
@@ -235,7 +240,9 @@ Figure \ref{f:sig CN} compares the total (Coulomb + nuclear) cross-section from 
 \end{center}
 \end{figure*}
 
-Figure \ref{f:sig form} compares predictions from several CNI formulae to the reference from the numerical calculation (red, to all orders of $\alpha$). For both central (left) and peripheral (right) cases, the predictions by Cahn and KL are almost identical and they overlap with the numerical-calculation reference -- the relative difference is ${\cal O}(10^{-4})$. The trivial sum of the Coulomb and nuclear amplitudes can deviate up to about $3.5\un{\%}$. The formula by Petrov (missing one term wrt.~Cahn/KL) can deviate by almost $5\un{\%}$. The SWY formula provides relatively good description in the ``central'' case (relative deviations ${\cal O}(10^{-3})$) and somewhat worse description in the ``peripheral'' case (deviations up to about $1\un{\%}$). This is not surprising since the SWY formula assumes a slow nuclear phase variation.
+Figure \ref{f:sig form} compares predictions from several CNI formulae to the reference from the numerical calculation (red, to all orders of $\alpha$). For both central (top) and peripheral (bottom) cases, the predictions by Cahn and KL are almost identical and they overlap with the numerical-calculation reference -- the relative difference is ${\cal O}(10^{-4})$. The trivial sum of the Coulomb and nuclear amplitudes can deviate up to about $3.5\un{\%}$. The formula by Petrov (missing one term wrt.~Cahn/KL) can deviate by almost $5\un{\%}$. The SWY formula provides relatively good description in the ``central'' case (relative deviations ${\cal O}(10^{-3})$) and somewhat worse description in the ``peripheral'' case (deviations up to about $1\un{\%}$). This is not surprising since the SWY formula assumes a slow nuclear phase variation.
+
+\NEW{We disagree with the statement made below Eq.~(17) in Ref.~\cite{petrov2020-2}: if a formula shall hold generally and if we find (with whatever method) even a single example where it fails, we believe that this generally undermines the validity of the formula. In this way we interpret the deviations reported in the previous paragraph. Furthermore, let us stress that the examples used in this document are not ``random'' but with sound physics motivation. We do realise that numerical calculations come with limited accuracy -- for that reason multiple checks and validations are presented throughout the article.}
 
 
 %----------------------------------------------------------------------------------------------------
@@ -245,9 +252,9 @@ Figure \ref{f:sig form} compares predictions from several CNI formulae to the re
 
 The numerical integration in Eqs.~(\ref{eq:de C}), (\ref{eq:A N}) and (\ref{eq:F CN}) is performed with the help of the GSL library \cite{gsl}, in particular using adaptive integration based on 61-point Gauss-Kronrod rules.
 
-For the numerical integration one needs to set reasonable boundaries. In the case of Eq.~(\ref{eq:F CN}) a reasonable upper limit, $b_{\rm max}$, can be deduced by analysing the expression in the parentheses, in the lowest order being $2\I\delta^{\rm C+N}$. At large $b$, this function can well be approximated with $2\I\delta^{\rm C}_{\rm asym}$. One may truncate the integration once the $K_0(\lambda b)$ function becomes sufficiently small, i.e.~when $\lambda b$ exceeds a certain threshold. Consequently, we adopted $b_{\rm max} = c / \lambda$, where $c = 10$ was found appropriate by numerical tests -- variation of $c$ between $5$ and $50$ leads to negligible changes in the results.
+For the numerical integration one needs to set reasonable boundaries. In the case of Eq.~(\ref{eq:F CN}) a reasonable upper limit, $b_{\rm max}$, can be deduced by analysing the expression in the parentheses, in the lowest order being $2\I\delta^{\rm C+N}$. \NEW{Since the nuclear interaction is expected to be short-ranged, $\delta^{\rm N}$ shall vanish at large $b$ and thus $\delta^{\rm C+N} \approx \delta^{\rm C}$. Furthermore, the effect of Coulomb form-factors is expected to be concentrated at low $b$, therefore at large $b$ one may safely approximate $\delta^{\rm C+N} \approx \delta^{\rm C}_{\rm asym}$. These assumptions have been explicitly tested for the choices of nuclear amplitudes and Coulomb form-factors used in this article. Since $\delta^{\rm C}_{\rm asym} \propto K_0(\lambda b)$ and since $K_0$ is a monotonously falling function, one} may truncate the integration once the $K_0(\lambda b)$ function becomes sufficiently small, i.e.~when $\lambda b$ exceeds a certain threshold. Consequently, we adopted $b_{\rm max} = c / \lambda$, where $c = 10$ was found appropriate by numerical tests -- variation of $c$ between $5$ and $50$ leads to negligible changes in the results. \NEW{Finally, we would like to stress that this paragraph is about setting numerical integration bounds for Eq.~(\ref{eq:F CN}). For different integrations, different rules should be used -- in that sense we do not think that the criticism below Eq.~(18) in Ref.~\cite{petrov2020-2} is applicable here.}
 
-In the case of Eq.~(\ref{eq:de C}), the upper limit was set to $q_{\rm max} = 10^{max(3, 3 - log_{10}(b))} \un{GeV}$. This rule was found with numerical tests, there is negligible variation of the results when the parameters and varied around the quoted values. The rule works both with and without including form-factors. The reduction of $q_{\rm max}$ with $b$ can be justified by the fact that the amplitude of $J_0(bq)$ decreases with its increasing argument.
+In the case of Eq.~(\ref{eq:de C}), the upper limit was set to $q_{\rm max} = 10^{max(3, 3 - log_{10}(b))} \un{GeV}$. This rule was found with numerical tests, there is negligible variation of the results when the parameters and varied around the quoted values. The rule works both with and without including form-factors. The reduction of $q_{\rm max}$ with $b$ can be justified by the fact that the amplitude of $J_0(bq)$ \NEW{oscillations decreases with increasing $bq$}.
 
 The implementation of the analytic interference formulae (Cahn, KL, Petrov and SWY) is based on the Elegent software package \cite{elegent}.
 
@@ -266,9 +273,9 @@ It has been verified with a realistic proton form-factor that Cahn's approximati
 
 A numerical eikonal calculation of CNI effects, based directly on the eikonal additivity and carried out to all orders of $\alpha$ has been presented, likely for the first time.
 
-The new CNI formula proposed by Petrov \cite{petrov2018} (with one term missing wrt.~the formula by Cahn/KL) has been compared with the numerical calculation and found to deviate up to almost $5\un{\%}$.
+The new CNI formula proposed by Petrov \cite{petrov2018} (with one term missing wrt.~the formula by Cahn/KL) has been compared with the numerical calculation and found to deviate up to almost $5\un{\%}$. \NEW{Although this is shown with only two concrete examples (although still physically very relevant), we consider this as a general failure of the newly proposed formulae.}
 
-A plain sum of the Coulomb and nuclear amplitudes, compared to the eikonal numerical calculation, leads to deviations up to $3.5\un{\%}$.
+A plain sum of the Coulomb and nuclear amplitudes, compared to the eikonal numerical calculation, leads to deviations up to $3.5\un{\%}$. \NEW{Similarly to the above paragraph, we consider this observation as a failure of this proposal.}
 
 The SWY formula reproduces the numerical eikonal calculation well for the ``central'' nuclear amplitude. In the ``peripheral'' case, the deviations are up to $1\un{\%}$.
 
